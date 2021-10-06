@@ -11,7 +11,7 @@ pipeline {
         sh "terraform plan"
       }
     }
-    stage('parallel deploy){
+    stage('parallel deploy'){
        parallel {
             stage('Terraform Dev') {
               steps {
