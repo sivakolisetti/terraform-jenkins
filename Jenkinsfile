@@ -13,19 +13,19 @@ pipeline {
     }
     stage('Terraform Dev') {
       steps {
-        input 'Apply Plan'
+        echo 'Apply Plan for Dev'
         sh "terraform apply -var-file='dev.tfvars' -auto-approve"
       }
     }
     stage('Terraform Test') {
       steps {
-        input 'Apply Plan'
+        echo 'Apply Plan for Test'
         sh "terraform apply -var-file='test.tfvars' -auto-approve"
       }
     }
     stage('Terraform Prod') {
       steps {
-        input 'Apply Plan'
+        echo 'Apply Plan for Prod'
         sh "terraform apply -var-file='prod.tfvars' -auto-approve"
       }
     }
