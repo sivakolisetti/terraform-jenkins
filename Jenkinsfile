@@ -1,21 +1,20 @@
 pipeline {
-    agent any
-    stage {
-        stage('Terraform Init') {
-          steps {
-            sh "terraform init"
-          }
-        }
-        stage('Terraform Plan') {
-          steps {
-            sh "terraform plan"
-          }
-        }
-        stage('Terraform Dev') {
-            steps {
-            echo 'Apply Plan for Dev'
-            sh "terraform apply -var-file="dev.tfvars"  -auto-approve"
-            }
-        }
-    } 
+    stages {
+    stage('Terraform Init') {
+      steps {
+        sh "terraform init -input=false"
+      }
+    }
+    stage('Terraform Plan') {
+      steps {
+        sh "terraform plan"
+      }
+    }
+    stage('Terraform Dev') {
+      steps {
+        input 'Apply Plan'
+        sh "terraform apply -var-file='dev.tfvars' -auto-approve"
+      }
+    }
+  }
 }
