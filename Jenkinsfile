@@ -14,7 +14,7 @@ pipeline {
         stage('Terraform Dev') {
             steps {
             echo 'Apply Plan for Dev'
-            sh "terraform apply -var="bucketname=multideploydevs3" -auto-approve"
+            sh "terraform apply -var-file="dev.tfvars"  -auto-approve"
             }
         }
     } 
