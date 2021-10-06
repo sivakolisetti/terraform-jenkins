@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    stages {
     stage('Terraform Init') {
       steps {
         sh "terraform init"
@@ -31,7 +30,6 @@ pipeline {
                 sh "terraform apply -var="bucketname=multideployprods3" -auto-approve"
               }
             }
-        }
-     }
-  }
-}
+       }
+    }
+ }
