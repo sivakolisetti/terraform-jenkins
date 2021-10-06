@@ -16,19 +16,19 @@ pipeline {
             stage('Terraform Dev') {
               steps {
                 echo 'Apply Plan for Dev'
-                sh "terraform apply -var-file='dev.tfvars' -auto-approve"
+                sh "terraform apply -var="bucketname=multideploydevs3" -auto-approve"
               }
             }
             stage('Terraform Test') {
               steps {
                 echo 'Apply Plan for Test'
-                sh "terraform apply -var-file='test.tfvars' -auto-approve"
+                sh "terraform apply -var="bucketname=multideploytests3" -auto-approve"
               }
             }
             stage('Terraform Prod') {
               steps {
                 echo 'Apply Plan for Prod'
-                sh "terraform apply -var-file='prod.tfvars' -auto-approve"
+                sh "terraform apply -var="bucketname=multideployprods3" -auto-approve"
               }
             }
         }
