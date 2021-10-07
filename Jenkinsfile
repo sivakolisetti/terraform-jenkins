@@ -3,7 +3,7 @@ pipeline {
     stages {
       stage('Terraform Init') {
         steps {
-          sh "terraform init -input=false"
+          sh "terraform init"
         }
       }
       stage('Terraform Plan') {
@@ -11,7 +11,6 @@ pipeline {
           sh "terraform plan"
         }
       }
-    }
     stage('Terraform Dev') {
       steps {
         input 'Apply Plan'
@@ -29,5 +28,6 @@ pipeline {
         input 'Apply Plan'
         sh "terraform apply -var-file='dev.tfvars' -auto-approve"
       }
-    }  
+    }
+  }
 }
