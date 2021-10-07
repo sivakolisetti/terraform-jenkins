@@ -20,13 +20,13 @@ pipeline {
     stage('Terraform Test') {
       steps {
         input 'Apply Plan'
-        sh "terraform apply -var-file='dev.tfvars' -auto-approve"
+        sh "terraform apply -var-file='test.tfvars' -auto-approve"
       }
     }
     stage('Terraform Prod') {
       steps {
         input 'Apply Plan'
-        sh "terraform apply -var-file='dev.tfvars' -auto-approve"
+        sh "terraform apply -var-file='prod.tfvars' -auto-approve"
       }
     }
   }
