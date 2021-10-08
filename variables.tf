@@ -1,7 +1,11 @@
 variable "bucketname" {
+  type = map(string)
   description = "Name of the s3 bucket"
-  default     = "testmulti1"
-}
+  default = {
+    default = "testmulti9876test"
+    dev     = "testmulti9876dev"
+    prod    = "testmulti9876prod"
+  }
 
 variable "tags" {
   type        = map
