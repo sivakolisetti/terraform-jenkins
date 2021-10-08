@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "samplebucket" {
-  bucket = var.bucketname
+  bucket = lookup(var.bucketname, terraform.workspace)
   acl    = "private"
   tags   = var.tags
 }
